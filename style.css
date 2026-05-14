@@ -280,3 +280,108 @@ header p {
     border-color: var(--accent3);
     color: var(--accent3);
 }
+
+.presets-section {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.presets-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.preset-btn {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.8rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+
+.preset-btn:hover {
+    border-color: var(--accent2);
+    background: rgba(56, 189, 248, 0.08);
+    color: var(--accent3);
+    transform: translateY(-2px);
+}
+
+.history-section {
+    width: 100%;
+    max-width: 700px;
+}
+
+.history-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.history-item {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.9rem;
+    background: var(--surface2);
+    border: 1px dashed var(--border);
+    border-radius: 0.6rem;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.history-item:hover {
+    color: var(--text);
+    border-color: var(--accent);
+    border-style: solid;
+    background: rgba(192, 132, 252, 0.06);
+}
+
+@keyframes sparkle {
+    0% { opacity: 0; transform: scale(0.5) translateY(0); }
+    50% { opacity: 1; transform: scale(1.2) translateY(-10px); }
+    100% { opacity: 0; transform: scale(0.8) translateY(-20px);}
+}
+
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    animation: sparkle 0.6s ease forwards;
+    font-size: 1rem;
+}
+
+@keyframes pop {
+    0% { transform: translateY(-3px) scale(1.12); }
+    50% { transform: translateY(-5px) scale(1.2); }
+    100% { transform: translateY(-3px) scale(1.12); }
+}
+
+.part.pop { animation: pop 0.25s ease; }
+
+::-webkit-scrollbar { width: 4px }
+::-webkit-scrollbar-track { background: var(--bg);}
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
