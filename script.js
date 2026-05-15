@@ -133,3 +133,75 @@ const PARTS = {
     document.body.appendChild(sp);
     setTimeout(() => sp.remove(), 650);
   }
+
+  function randomize() {
+    PART_ORDER.forEach(key => {
+      const opts = PARTS[key].options;
+      currentState[key] = opts[Math.floor(Math.random() * opts.length)];
+    });
+    if (activePart) showPicker(activePart);
+    renderKaomoji();
+  }
+  
+  function resetDefault() {
+    currentState = {
+      leftBracket: "(",
+      leftArm: "",
+      leftEye: "˘",
+      mouth: "ᵕ",
+      rightEye: "˘",
+      rightArm: "",
+      rightBracket: ")",
+      suffix: ""
+    };
+    activePart = null;
+    document.getElementById('picker-empty').style.display = 'flex';
+    document.getElementById('picker-content').style.display = 'none';
+    renderKaomoji();
+  }
+  
+  function saveToHistory() {
+    const kao = PART_ORDER.map(k => currentState[k]).join('');
+    if (!history.includes(kao)) {
+      history.unshift(kao);
+      if (history.length > 20) history.pop();
+      renderHistory();
+    }
+  }
+  
+  function renderHistory() {
+    const section = document.getElementById('history-section');
+    const grid = document.getElementById('history-grid');
+    if (history.length === 0) {
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = 'block';
+    grid.innerHTML = '';
+    history.forEach(kao => {
+      const item = document.createElement('div');
+      item.className = 'history-item';
+      item.textContent = kao;
+      item.title = 'click to copy';
+      item.addEventListener('click', () => {
+        navigator.clipboard.writeText(kao).then(() => {
+          item.style.color = '#4ade80';
+          setTimeout(() => item.style.color = '', 1000);
+        });
+      });
+      grid.appendChild(item);
+    });
+  }
+  
+  function copyKaomoji() {
+    const kao = PART_ORDER.map(k => currentState[k]).join('');
+    const btn = document.getElementById('copy-btn');
+    navigator.clipboard.writeText(kao).then(() => {
+      btn.classList.add('copied');
+      btn.innerHTML = '<span>✓</span> copied!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = '<span>⎘</span> copy';
+      }, 2000);
+    });
+  }
