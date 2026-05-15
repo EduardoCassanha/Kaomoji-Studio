@@ -1,13 +1,59 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Kaomoji Studio</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Noto-Sans+JP:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap');
-        </style>
-    </head>
-    <body>
-    </body>
-</html>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Kaomoji Studio</title>
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+
+            <h1>kaomoji studio!</h1>
+            <p>Click on the parts to customize your kaomoji!</p>
+            <!-- display -->
+
+            <div class="kaomoji-display" id="display">
+                <div class="kaomoji-row" id="kaomoji-row"></div>
+                <div class="kaomoji-full" id="kaomoji-full"></div>
+                <button class="copy-btn" id="copy-btn" onclick="copyKaomoji()">
+                    <span>@</span> copy
+                </button>
+            </div>
+
+            <!-- controls -->
+
+            <div class="controls">
+                <button class="btn btn-primary" onclick="randomize()">randomize</button>
+                <button class="btn btn-secondary" onclick="resetDefault()">reset</button>
+                <button class="btn btn-secondary" onclick="saveToHistory()">save</button>
+            </div>
+
+            <!-- picker -->
+
+            <div class="picker" id="picker">
+                <div class="picker-empty" id="picker-empty">
+                    click on a part of the kaomoji to edit
+                </div>
+                <div id="picker-content" style="display:none">
+                    <div class="picker-title" id="picker-label">options</div>
+                    <div class="options-grid" id="options-grid"></div>    
+                </div>
+            </div>
+
+            <!-- presets -->
+
+            <div class="presets-section">
+                <div class="section-title">presets</div>
+                <div class="presets-grid" id="presets-grid"></div>
+            </div>
+
+            <!-- history -->
+
+            <div class="history-section" id="history-section" style="display:none">
+                <div class="section-title">saved</div>
+                <div class="history-grid" id="history-grid"></div>    
+            </div>
+
+            <script src="script.js"></script>
+        </body>
+    </html>
