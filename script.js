@@ -205,3 +205,23 @@ const PARTS = {
       }, 2000);
     });
   }
+
+  function renderPresets() {
+    const grid = document.getElementById('presets-grid');
+    PRESETS.forEach(p => {
+      const btn = document.createElement('button');
+      btn.className = 'preset-btn';
+      btn.textContent = p.name;
+      btn.addEventListener('click', () => {
+        currentState = { ...p.state };
+        activePart = null;
+        document.getElementById('picker-empty').style.display = 'flex';
+        document.getElementById('picker-content').style.display = 'none';
+        renderKaomoji();
+      });
+      grid.appendChild(btn);
+    });
+  }
+  
+  renderKaomoji();
+  renderPresets();
