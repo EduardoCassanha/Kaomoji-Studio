@@ -33,7 +33,16 @@ const PARTS = {
     }
   };
   
-  const PART_ORDER = ["leftBracket","leftArm","leftEye","mouth","rightEye","rightArm","rightBracket","suffix"];
+const PART_ORDER = [
+    "leftArm",
+    "leftBracket", 
+    "leftEye", 
+    "mouth", 
+    "rightEye", 
+    "rightBracket", 
+    "rightArm",
+    "suffix"
+  ];
   
   const PRESETS = [
     { name: "(˘ᵕ˘)", state: { leftBracket:"(", leftArm:"", leftEye:"˘", mouth:"ᵕ", rightEye:"˘", rightArm:"", rightBracket:")", suffix:"" } },
@@ -223,5 +232,5 @@ const PARTS = {
     });
   }
   
-  renderKaomoji();
-  renderPresets();
+    renderKaomoji();
+    renderPresets();
