@@ -28,12 +28,13 @@ body {
 }
 
 body::before {
+    pointer-events: none !important;
     content: '';
     position: fixed;
     inset: 0;
     background:
         radial-gradient(ellipse 60% 40% at 20% 10%, rgba(192, 132, 252, 0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 30% at 80% 80%, rgba(56, 189, 248, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 30% at 80% 80%, rgba(56, 189, 248, 0.06) 0%, transparent 60%);
 }
 
 header {
@@ -58,7 +59,7 @@ header p {
     letter-spacing: 0.08em;
 }
 
-.kaomoji.display {
+.kaomoji-display {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 1.5rem;
