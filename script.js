@@ -217,20 +217,24 @@ const PART_ORDER = [
 
   function renderPresets() {
     const grid = document.getElementById('presets-grid');
+    grid.innerHTML = '';
     PRESETS.forEach(p => {
-      const btn = document.createElement('button');
-      btn.className = 'preset-btn';
-      btn.textContent = p.name;
-      btn.addEventListener('click', () => {
-        currentState = { ...p.state };
-        activePart = null;
-        document.getElementById('picker-empty').style.display = 'flex';
-        document.getElementById('picker-content').style.display = 'none';
-        renderKaomoji();
-      });
-      grid.appendChild(btn);
+        const btn = document.createElement('button');
+        btn.className = 'preset-btn';
+        btn.textContent = p.name;
+        btn.addEventListener('click', () => {
+            currentState = { ...p.state };
+            activePart = null;
+            const empty = document.getElementById('picker-empty');
+            const content = document.getElementById('picker-content');
+            if(empty) empty.style.display = 'flex';
+            if(content) content.style.display = 'none';
+            
+            renderKaomoji();
+        });
+        grid.appendChild(btn);
     });
-  }
+}
   
     renderKaomoji();
     renderPresets();
