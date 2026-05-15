@@ -28,7 +28,8 @@ body {
 }
 
 body::before {
-    pointer-events: none !important;
+    pointer-events: none;
+    z-index: -1;
     content: '';
     position: fixed;
     inset: 0;
@@ -379,6 +380,11 @@ header p {
     0% { transform: translateY(-3px) scale(1.12); }
     50% { transform: translateY(-5px) scale(1.2); }
     100% { transform: translateY(-3px) scale(1.12); }
+}
+
+.kaomoji-display, .controls, .picker, .presets-section {
+    position: relative;
+    z-index: 10;
 }
 
 .part.pop { animation: pop 0.25s ease; }
